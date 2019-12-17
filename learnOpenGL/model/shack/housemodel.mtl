@@ -1,0 +1,187 @@
+# Blender MTL File: 'None'
+# Material Count: 17
+
+newmtl initialShadingGroup
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd floor.psd
+
+newmtl jerrycanfinished:initialShadingGroup
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.500000 0.500000 0.500000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+
+newmtl jerrycanfinished:phong1SG
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd F:\\VS2017\\learnOpenGL\\learnOpenGL\\learnOpenGL\\model\\shackjerrycangreen.jpg
+
+newmtl lambert11SG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd beam_shack.psd
+
+newmtl lambert12SG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd stool_leg_shack.psd
+
+newmtl lambert16SG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd stool_shack.psd
+
+newmtl lambert2SG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd shack.jpg
+
+newmtl lambert3SG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd door.psd
+
+newmtl lambert4SG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd roof.psd
+
+newmtl lambert5SG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd frame_shack.psd
+
+newmtl lambert6SG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd window_shack.psd
+
+newmtl lambert7SG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd left_wall.psd
+
+newmtl lambert8SG
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd rear_wall_shack.psd
+
+newmtl phong1SG
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd tin_roof_grey.psd
+
+newmtl phong2SG
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd ring.jpg
+
+newmtl phong3SG
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd F:\\VS2017\\learnOpenGL\\learnOpenGL\\learnOpenGL\\model\shack\\steering_wheel.jpg
+
+newmtl phong4SG
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.340000 0.340000 0.340000
+Ks 0.500000 0.500000 0.500000
+Ke 0.0 0.0 0.0
+Ni 1.000000
+d 1.000000
+illum 2
