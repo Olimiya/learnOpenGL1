@@ -76,7 +76,7 @@ int main()
 	// load models
 	// -----------
 	Model ourModel("./obj/Space Station Scene.obj");
-	//Model ourModel("./nanosuit/nanosuit.obj");
+	Model ourModel1("./nanosuit/nanosuit.obj");
 
 	SceneName scene = Olimi;
 
@@ -98,7 +98,7 @@ int main()
 			//设置光源
 			//定向光
 			ourShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
-			ourShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
+			ourShader.setVec3("dirLight.diffuse", 1.0f, 1.0f, 1.0f);
 			ourShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
 			ourShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
 			//点光源
@@ -144,7 +144,7 @@ int main()
 			model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 			model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
 			ourShader.setMat4("model", model);
-			ourModel.Draw(ourShader);
+			ourModel1.Draw(ourShader);
 		}
 			break;
 		case SICONG:

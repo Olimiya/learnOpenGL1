@@ -135,8 +135,8 @@
 //	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 //	glEnableVertexAttribArray(0);
 //	
-//	GLuint texture = loadTexture("white.bmp");
-//	//GLuint texture2 = loadTexture("lighting_maps_specular_color.png");
+//	GLuint texture = loadTexture("container2.png");
+//	GLuint texture2 = loadTexture("lighting_maps_specular_color.png");
 //	//GLuint texture3 = loadTexture("matrix.jpg");
 //	// render loop
 //	while (!glfwWindowShouldClose(window))
@@ -212,10 +212,10 @@
 //
 //		// render the cube
 //		glBindVertexArray(cubeVAO);
-//		//glActiveTexture(GL_TEXTURE0);
-//		//glBindTexture(GL_TEXTURE_2D, texture);
-//		//glActiveTexture(GL_TEXTURE1);
-//		//glBindTexture(GL_TEXTURE_2D, texture2);
+//		glActiveTexture(GL_TEXTURE0);
+//		glBindTexture(GL_TEXTURE_2D, texture);
+//		glActiveTexture(GL_TEXTURE1);
+//		glBindTexture(GL_TEXTURE_2D, texture2);
 //		//glActiveTexture(GL_TEXTURE2);
 //		//glBindTexture(GL_TEXTURE_2D, texture3);
 //		for (unsigned int i = 0; i < 10; i++)
