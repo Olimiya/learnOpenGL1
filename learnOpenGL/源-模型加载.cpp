@@ -16,14 +16,12 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow *window);
 
-#define NR_POINT_LIGHTS 4
-
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 10.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -31,14 +29,6 @@ bool firstMouse = true;
 // timing
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
-
-glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
-glm::vec3 pointLightPositions[] = {
-	glm::vec3(0.7f,  0.2f,  2.0f),
-	glm::vec3(2.3f, -3.3f, -4.0f),
-	glm::vec3(-4.0f,  2.0f, -12.0f),
-	glm::vec3(0.0f,  0.0f, -3.0f)
-};
 
 int main()
 {
@@ -84,42 +74,11 @@ int main()
 
 	// load models
 	// -----------
-	//Model ourModel("./obj/Space Station Scene.obj");
-	Model ourModel("./nanosuit/nanosuit.obj");
+	Model ourModel("./obj/Space Station Scene.obj");
+
 
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	//设置光源
-	ourShader.use();
-	//定向光
-	ourShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
-	ourShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
-	ourShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
-	ourShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-	//点光源
-	for (int i = 0; i < NR_POINT_LIGHTS; i++)
-	{
-		std::string name = "pointLights[";
-		std::string temp;
-		std::stringstream ss;
-		ss << i;
-		ss >> temp;
-		name = name + temp + ("].");
-		ourShader.setVec3(name + "pos", pointLightPositions[i]);
-		ourShader.setVec3(name + "ambient", 0.05f, 0.05f, 0.05f);
-		ourShader.setVec3(name + "diffuse", 0.8f, 0.8f, 0.8f);
-		ourShader.setVec3(name + "specular", 1.0f, 1.0f, 1.0f);
-		ourShader.setFloat(name + "constant", 1.0f);
-		ourShader.setFloat(name + "linear", 0.09);
-		ourShader.setFloat(name + "quadratic", 0.032);
-	}
-	//聚光灯
-	ourShader.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
-	ourShader.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
-	ourShader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
-	ourShader.setFloat("spotLight.constant", 1.0f);
-	ourShader.setFloat("spotLight.linear", 0.09);
-	ourShader.setFloat("spotLight.quadratic", 0.032);
 
 	// render loop
 	// -----------
@@ -142,13 +101,6 @@ int main()
 
 		// don't forget to enable shader before setting uniforms
 		ourShader.use();
-		//聚光灯
-		ourShader.setVec3("spotLight.pos", camera.Position);
-		ourShader.setVec3("spotLight.direction", camera.Front);
-		ourShader.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
-		ourShader.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
-
-		ourShader.setVec3("viewPos", camera.Position);
 
 		// view/projection transformations
 		glm::mat4 projection = glm::perspective(

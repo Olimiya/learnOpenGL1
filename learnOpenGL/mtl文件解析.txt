@@ -1,0 +1,8 @@
+Ns-反射光指数-shininess
+Ni-材质表面光密度（不用管）
+d-透明度，其中1.0表示不透明，0.0表示完全透明 ..不知道怎么用..
+Tf-滤光透射率（不用管）
+Ka-环境光颜色-light_ambient
+Ks-漫反射光颜色-light_diffuse
+Ke-镜面反射光颜色-light_specular
+map_Ka、map_Kd、map_Ks-分别对应环境光照，漫反射光照，镜面反射光照纹理图片_material_ambient, material_diffuse, material_specular

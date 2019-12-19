@@ -26,6 +26,7 @@ private:
 	vector<Mesh> meshes;
 	string directory;
 	bool gammaCorrection;
+	unsigned int whiteTexture;
 
 	void loadModel(string const &path)
 	{
@@ -38,6 +39,7 @@ private:
 		}
 		directory = path.substr(0, path.find_last_of("/"));
 
+		whiteTexture = TextureFromFile("white.bmp", "./");
 		processNode(scene->mRootNode, scene);
 	}
 	void processNode(aiNode* node, const aiScene* scene)
@@ -55,7 +57,17 @@ private:
 	{
 		vector<Vertex> vertices;
 		vector<Texture> textures;
+		//默认都至少会有一张白色的贴图
+		Texture texture;
+		texture.id = whiteTexture;
+		texture.name = "white";
+		texture.path = "./white.bmp";
+		textures.push_back(texture);
 		vector<unsigned int> indices;
+		Material matAttr;
+		matAttr.ka = glm::vec3(1.0f, 0.5f, 0.31f);
+		matAttr.kd = glm::vec3(1.0f, 0.5f, 0.31f);
+		matAttr.ks = glm::vec3(0.5f, 0.5f, 0.5f);
 
 		for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 		{
@@ -109,6 +121,7 @@ private:
 		if (mesh->mMaterialIndex > 0)
 		{
 			aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
+			//1. diffuse maps
 			vector<Texture> diffuseMaps = loadMaterialTextures(material,
 				aiTextureType_DIFFUSE, "texture_diffuse");
 			textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
@@ -124,8 +137,32 @@ private:
 			std::vector<Texture> heightMaps = loadMaterialTextures(material,
 				aiTextureType_AMBIENT, "texture_height");
 			textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
+
+			aiColor3D color;
+			glm::vec3 temp;
+			material->Get(AI_MATKEY_COLOR_AMBIENT, color);
+			temp.r = color.r;
+			temp.g = color.g;
+			temp.b = color.b;
+			matAttr.ka = temp;
+			material->Get(AI_MATKEY_COLOR_DIFFUSE, color);
+			temp.r = color.r;
+			temp.g = color.g;
+			temp.b = color.b;
+			matAttr.kd = temp;
+			material->Get(AI_MATKEY_COLOR_SPECULAR, color);
+			temp.r = color.r;
+			temp.g = color.g;
+			temp.b = color.b;
+			matAttr.ks = temp;
+			float shinness;
+			material->Get(AI_MATKEY_SHININESS, shinness);
+			matAttr.shiness = shinness;
+			//auto i = aiGetMaterialFloat(material, AI_MATKEY_SHININESS, &shinness);
+
+			//material->Get(AI_MATKEY_SHININESS_STRENGTH, shinness);
 		}
-		return Mesh(vertices, textures, indices);
+		return Mesh(vertices, textures, indices, matAttr);
 	}
 	vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName)
 	{

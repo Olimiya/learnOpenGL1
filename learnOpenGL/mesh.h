@@ -29,44 +29,75 @@ struct Texture
 	string path;
 };
 
+struct Material
+{
+	float shiness;
+	glm::vec3 ka;
+	glm::vec3 kd;
+	glm::vec3 ks;
+};
+
 class Mesh
 {
 public:
 	vector<Vertex> vertices;
 	vector<Texture> textures;
 	vector<unsigned int> indices;
+	Material material;
 
-	Mesh(vector<Vertex> vertices, vector<Texture> textures, vector<unsigned int> indices)
+	Mesh(vector<Vertex> vertices, vector<Texture> textures, vector<unsigned int> indices, Material material)
 	{
 		this->vertices = vertices;
 		this->textures = textures;
 		this->indices = indices;
+		this->material = material;
 
 		this->setupMesh();
 	}
 	void Draw(Shader shader)
 	{
-		unsigned int diffuseNumber = 1;
-		unsigned int specularNumber = 1;
-		unsigned int normalNumber = 1;
-		unsigned int heightNumber = 1;
-		for (int i = 0; i < textures.size(); i++)
+		bool diffuse = false;
+		bool specular = false;
+		//unsigned int diffuseNumber = 1;
+		//unsigned int specularNumber = 1;
+		//unsigned int normalNumber = 1;
+		//unsigned int heightNumber = 1;
+		for (int i = 1; i < textures.size(); i++)
 		{
-			glActiveTexture(GL_TEXTURE0 + i);
-			string number;
-			string name;
+			string name = textures[i].name;
 			if (name == "texture_diffuse")
-				number = to_string(diffuseNumber++);
+				diffuse = true;
 			else if (name == "texture_specular")
-				number = to_string(specularNumber++);
-			else if (name == "texture_normal")
-				number = to_string(normalNumber++);
-			else if (name == "texture_height")
-				number = to_string(heightNumber++);
+				specular = true;
+			//else if (name == "texture_normal")
+			//	number = to_string(normalNumber++);
+			//else if (name == "texture_height")
+			//	number = to_string(heightNumber++);
 
-			shader.setInt(("material." + name + number).c_str(), i);
+			glActiveTexture(GL_TEXTURE0 + i - 1);
+			shader.setInt(("material." + name).c_str(), i - 1);
 			glBindTexture(GL_TEXTURE_2D, textures[i].id);
 		}
+		int i = textures.size() - 1;
+		if (!diffuse)
+		{
+			glActiveTexture(GL_TEXTURE0 + i);
+			shader.setInt("material.texture_diffuse", i);
+			i++;
+			glBindTexture(GL_TEXTURE_2D, textures[0].id);
+		}
+		if (!specular)
+		{
+			glActiveTexture(GL_TEXTURE0 + i);
+			shader.setInt("material.texture_specular", i);
+			glBindTexture(GL_TEXTURE_2D, textures[0].id);
+		}
+
+		//传入材质
+		shader.setVec3("material.ka", material.ka);
+		shader.setVec3("material.kd", material.kd);
+		shader.setVec3("material.ks", material.ks);
+		shader.setFloat("material.shininess", material.shiness);
 
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
