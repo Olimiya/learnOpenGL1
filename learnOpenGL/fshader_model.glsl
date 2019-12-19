@@ -58,6 +58,7 @@ in vec3 Normal;
 in vec3 FragPos;
 in vec2 texCoord;
 
+//改变需要用的光源
 uniform Material material;
 uniform DirLight dirLight;
 uniform PointLight pointLights[NR_POINT_LIGHTS];
@@ -70,6 +71,8 @@ vec3 calSpotLight(SpotLight light, vec3 norm, vec3 FragPos, vec3 viewDir);
 
 void main()
 {
+	//这里需要统一选择一种恰当的光源组合方法
+	//如：只有一个点光源
 	vec3 norm = normalize(Normal);
     vec3 viewDir = normalize(viewPos - FragPos);
 
