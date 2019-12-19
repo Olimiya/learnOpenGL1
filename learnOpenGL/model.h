@@ -157,7 +157,7 @@ private:
 			matAttr.ks = temp;
 			float shinness;
 			material->Get(AI_MATKEY_SHININESS, shinness);
-			matAttr.shiness = shinness;
+			matAttr.shiness = shinness / 4;
 			//auto i = aiGetMaterialFloat(material, AI_MATKEY_SHININESS, &shinness);
 
 			//material->Get(AI_MATKEY_SHININESS_STRENGTH, shinness);

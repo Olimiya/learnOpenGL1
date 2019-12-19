@@ -84,8 +84,8 @@ int main()
 
 	// load models
 	// -----------
-	//Model ourModel("./obj/Space Station Scene.obj");
-	Model ourModel("./nanosuit/nanosuit.obj");
+	Model ourModel("./obj/Space Station Scene.obj");
+	//Model ourModel("./nanosuit/nanosuit.obj");
 
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
