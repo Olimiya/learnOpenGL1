@@ -15,6 +15,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow *window);
+GLFWwindow* init();
 
 #define NR_POINT_LIGHTS 4
 
@@ -44,30 +45,7 @@ glm::vec3 pointLightPositions[] = {
 
 int main()
 {
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
-	if (window == NULL)
-	{
-		std::cout << "Failed to create GLFW window" << std::endl;
-		glfwTerminate();
-		return -1;
-	}
-	glfwMakeContextCurrent(window);
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-	glfwSetCursorPosCallback(window, mouse_callback);
-	glfwSetScrollCallback(window, scroll_callback);
-
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cout << "Failed to initialize GLAD" << std::endl;
-		return -1;
-	}
+	GLFWwindow *window = init();
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -76,7 +54,8 @@ int main()
 	// load models
 	// -----------
 	Model ourModel("./obj/Space Station Scene.obj");
-	Model ourModel1("./nanosuit/nanosuit.obj");
+	//Model ourModel1("./nanosuit/nanosuit.obj");
+	//Model ourModel2("./2/The City.obj");
 
 	SceneName scene = Olimi;
 
@@ -87,7 +66,7 @@ int main()
 		lastFrame = currentFrame;
 
 		processInput(window);
-		glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
+		glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		switch (scene)
@@ -144,7 +123,7 @@ int main()
 			model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 			model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
 			ourShader.setMat4("model", model);
-			ourModel1.Draw(ourShader);
+			ourModel.Draw(ourShader);
 		}
 			break;
 		case SICONG:
@@ -177,6 +156,35 @@ void processInput(GLFWwindow *window)
 		camera.ProcessKeyboard(LEFT, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, deltaTime);
+}
+
+GLFWwindow * init()
+{
+	glfwInit();
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+	if (window == NULL)
+	{
+		std::cout << "Failed to create GLFW window" << std::endl;
+		glfwTerminate();
+		exit(-1);
+	}
+	glfwMakeContextCurrent(window);
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+	glfwSetCursorPosCallback(window, mouse_callback);
+	glfwSetScrollCallback(window, scroll_callback);
+
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+	{
+		std::cout << "Failed to initialize GLAD" << std::endl;
+		exit(-1);
+	}
+	return window;
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
