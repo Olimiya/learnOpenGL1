@@ -44,13 +44,13 @@ private:
 	}
 	void processNode(aiNode* node, const aiScene* scene)
 	{
-		for (int i = 0; i < node->mNumMeshes; i++)
+		for (unsigned int i = 0; i < node->mNumMeshes; i++)
 		{
 			aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
 			Mesh ourMesh = processMesh(mesh, scene);
 			this->meshes.push_back(ourMesh);
 		}
-		for (int i = 0; i < node->mNumChildren; i++)
+		for (unsigned int i = 0; i < node->mNumChildren; i++)
 			processNode(node->mChildren[i], scene);
 	}
 	Mesh processMesh(aiMesh* mesh, const aiScene* scene)

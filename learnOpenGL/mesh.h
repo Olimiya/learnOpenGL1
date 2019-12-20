@@ -62,7 +62,7 @@ public:
 		//unsigned int specularNumber = 1;
 		//unsigned int normalNumber = 1;
 		//unsigned int heightNumber = 1;
-		for (int i = 1; i < textures.size(); i++)
+		for (unsigned int i = 1; i < textures.size(); i++)
 		{
 			string name = textures[i].name;
 			if (name == "texture_diffuse")
