@@ -175,6 +175,7 @@ private:
 			for (unsigned int j = 0; j < this->textures_loaded.size(); j++)
 				if (std::strcmp(textures_loaded[j].path.data(), str.C_Str()) == 0)
 				{
+					textures.push_back(textures_loaded[j]);
 					skip = true;
 					break;
 				}

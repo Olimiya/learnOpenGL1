@@ -1,0 +1,268 @@
+newmtl Untitled:Devices
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Devices.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Door
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Door.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Door2
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Door2.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Frame
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Frame.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Frame2
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Frame2.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Frame4
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Frame3.jpg
+Ni 1.00
+Ks 0.99 0.99 0.99
+Ns 50.00
+
+newmtl Untitled:Glass_a
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnO_Glass.jpg
+Ni 1.00
+Ks 0.88 0.94 1.00
+Ns 100.00
+
+newmtl Untitled:Hull1
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Hull1.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Hull2
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Hull2.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Hull3
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Hull3.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Hull4
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Hull4.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Hull5
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Hull5.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Hull7
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Hull7.jpg
+Ni 1.00
+Ks 0.99 0.99 0.99
+Ns 50.00
+
+newmtl Untitled:Hull9
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Hull8.jpg
+Ni 1.00
+Ks 0.99 0.99 0.99
+Ns 50.00
+
+newmtl Untitled:Hull11
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Hull9.jpg
+Ni 1.00
+Ks 0.99 0.99 0.99
+Ns 50.00
+
+newmtl Untitled:Hull13
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Hull10.jpg
+Ni 1.00
+Ks 0.98 0.98 0.98
+Ns 50.00
+
+newmtl Untitled:Hull15
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Hull11.jpg
+Ni 1.00
+Ks 0.98 0.98 0.98
+Ns 50.00
+
+newmtl Untitled:Hull17
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Hull6.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Light
+illum 2
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Light.jpg
+Ni 1.00
+Ks 0.78 0.98 1.00
+Ns 100.00
+
+newmtl Untitled:Light2
+illum 2
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Light2.jpg
+Ni 1.00
+Ks 0.81 1.00 0.95
+Ns 100.00
+
+newmtl Untitled:Light4
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.96 1.00 0.96
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Light2.jpg
+Ni 1.00
+Ks 0.81 1.00 0.91
+Ns 100.00
+
+newmtl Untitled:Pipes
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Pipes.jpg
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 40.00
+
+newmtl Untitled:Pipes2
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Pipes2.jpg
+Ni 1.00
+Ks 0.96 0.96 0.96
+Ns 50.00
+
+newmtl Untitled:Pipes4
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Pipes3.jpg
+Ni 1.00
+Ks 0.98 0.98 0.98
+Ns 50.00
+
+newmtl Untitled:Preview
+illum 2
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 0.10 0.10 0.10
+Ns 50.00
+
+newmtl Untitled:Stand
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnO_Stand.jpg
+Ni 1.00
+Ks 0.99 0.99 0.99
+Ns 50.00
+
+newmtl Untitled:Stand4
+illum 2
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PtEnS_Stand2.jpg
+Ni 1.00
+Ks 0.98 0.98 0.98
+Ns 50.00

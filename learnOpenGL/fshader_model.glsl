@@ -109,12 +109,14 @@ vec3 calPointLight(PointLight light, vec3 norm, vec3 FragPos, vec3 viewDir)
 
 	//2.漫反射光
 	float diff = max(dot(norm, lightDir), 0.0);
-	vec3 diffuse = (diff * vec3(texture(material.texture_diffuse, texCoord))) * light.diffuse * material.kd;
+	vec3 diffuse = (diff * vec3(texture(material.texture_diffuse, texCoord)))
+	* light.diffuse * material.kd;
 
 	//3.镜面反射光
 	vec3 reflectDir = reflect(-lightDir, norm);
 	float spec = pow(max(dot(reflectDir, viewDir), 0.0), material.shininess);
-	vec3 specular = (spec * vec3(texture(material.texture_specular, texCoord))) * light.specular * material.ks;
+	vec3 specular = (spec * vec3(texture(material.texture_specular, texCoord)))
+	* light.specular * material.ks;
 
 	float dist = length(FragPos - light.pos);
 	float attenuation = 1.0f / (1.0f + light.linear * dist + light.quadratic * dist * dist);

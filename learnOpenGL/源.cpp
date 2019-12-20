@@ -32,6 +32,7 @@ enum SceneName
 {
 	Olimi, SICONG, HUANG, OU
 };
+SceneName scene = Olimi;
 
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
@@ -97,6 +98,7 @@ float vertices[] = {
 };
 unsigned int lightVAO;
 bool gameStart = false;
+int changeLight = 0;
 
 int main()
 {
@@ -105,6 +107,7 @@ int main()
 	glEnable(GL_DEPTH_TEST);
 
 	Shader ourShader("vshader_model.glsl", "fshader_model.glsl");
+	Shader ourShader1("vshader_model.glsl", "fshader.glsl");
 
 	Shader lampShader("vshader_light.glsl", "fshader_light.glsl");
 	glGenVertexArrays(1, &lightVAO);
@@ -120,9 +123,10 @@ int main()
 
 	Model ourModel("./obj/Space Station Scene.obj");
 	Model ourModel1("./nanosuit/nanosuit.obj");
+	Model ourModel2("./Ensk_station_obj/Ensk_station.obj");
+	Model ourModel3("./house/housemodel1.obj");
+	Model ourModel4("./earth/earth.obj");
 	glm::vec3 robotPos = glm::vec3(0, 0, 0);
-
-	SceneName scene = Olimi;
 
 	bool finish = false;
 	while (!glfwWindowShouldClose(window))
@@ -141,10 +145,41 @@ int main()
 		{
 		case Olimi:
 		{
+			//在这个模型中不能飞
+			camera.Position.y = 0.0f;
 			//画空间站
 			ourShader.use();
 			//设置光源
-			setBiochemicalLight(ourShader);
+			switch (changeLight)
+			{
+			case 0:
+			{
+				setDefaultLight(ourShader);
+			}
+				break;
+			case 1:
+			{
+				setBiochemicalLight(ourShader);
+			}
+				break;
+			case 2:
+			{
+				setDesertLight(ourShader);
+			}
+				break;
+			case 3:
+			{
+				setFactoryLight(ourShader);
+			}
+				break;
+			case 4:
+			{
+				setHorrorLight(ourShader);
+			}
+				break;
+			default:
+				break;
+			}
 			ourShader.setVec3("viewPos", camera.Position);
 			glm::mat4 projection = glm::perspective(
 				glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -184,16 +219,67 @@ int main()
 				if(overlap(robotPos, camera.Position))
 				{
 					std::cout << "Game Over!" << std::endl;
-					finish = true;
+					scene = HUANG;
 				}
 			}
 		}
 		break;
 		case SICONG:
+		{
+			//画空间站
+			ourShader.use();
+			//设置光源
+			setDefaultLight(ourShader);
+			ourShader.setVec3("viewPos", camera.Position);
+			glm::mat4 projection = glm::perspective(
+				glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+			glm::mat4 view = camera.GetViewMatrix();
+			ourShader.setMat4("projection", projection);
+			ourShader.setMat4("view", view);
+			glm::mat4 model = glm::mat4(1.0f);
+			model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
+			model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+			ourShader.setMat4("model", model);
+			ourModel3.Draw(ourShader);
+		}
 			break;
 		case HUANG:
+		{
+			//画空间站
+			ourShader1.use();
+			//设置光源
+			setDefaultLight(ourShader1);
+			ourShader1.setVec3("viewPos", camera.Position);
+			glm::mat4 projection = glm::perspective(
+				glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+			glm::mat4 view = camera.GetViewMatrix();
+			ourShader1.setMat4("projection", projection);
+			ourShader1.setMat4("view", view);
+			glm::mat4 model = glm::mat4(1.0f);
+			model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
+			model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+			ourShader1.setMat4("model", model);
+			ourModel2.Draw(ourShader1);
+		}
 			break;
 		case OU:
+		{
+			//画空间站
+			ourShader1.use();
+			//设置光源
+			setDefaultLight(ourShader1);
+			ourShader1.setVec3("viewPos", camera.Position);
+			glm::mat4 projection = glm::perspective(
+				glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+			glm::mat4 view = camera.GetViewMatrix();
+			ourShader1.setMat4("projection", projection);
+			ourShader1.setMat4("view", view);
+			glm::mat4 model = glm::mat4(1.0f);
+			model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
+			model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+			ourShader1.setMat4("model", model);
+			ourModel4.Draw(ourShader1);
+		}
 			break;
 		default:
 			break;
@@ -222,6 +308,22 @@ void processInput(GLFWwindow *window)
 		camera.ProcessKeyboard(RIGHT, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
 		gameStart = true;
+	if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
+		changeLight = 0;
+	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+		changeLight = 1;
+	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+		changeLight = 2;
+	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
+		changeLight = 3;
+	if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
+		changeLight = 4;
+	if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
+		scene = SICONG;
+	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
+		scene = HUANG;
+	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
+		scene = Olimi;
 }
 
 GLFWwindow * init()

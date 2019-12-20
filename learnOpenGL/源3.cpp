@@ -1,9 +1,8 @@
-﻿//#include "mesh.h"
+﻿//#include "loadMtl.h"
 //
 //int main()
 //{
-//	auto i = 0.0f;
-//	std::cout << glm::acos(0.99f) << std::endl;
+//	LoadMTL a("./obj/Space Station Scene.mtl");
 //
 //	system("pause");
 //}
