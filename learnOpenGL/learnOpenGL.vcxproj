@@ -129,10 +129,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="glad.c" />
-    <ClCompile Include="源.cpp" />
+    <ClCompile Include="源3-模型.cpp" />
     <ClCompile Include="源1-坐标空间.cpp" />
     <ClCompile Include="源2-光照.cpp" />
-    <ClCompile Include="源3.cpp" />
+    <ClCompile Include="源4-高级.cpp" />
+    <ClCompile Include="源4-高级2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
@@ -144,15 +145,12 @@
     <ClInclude Include="model.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="f2shader.glsl" />
-    <None Include="fshader.glsl" />
-    <None Include="fshader_light.glsl" />
-    <None Include="fshader_model.glsl" />
+    <None Include="f4shader.glsl" />
+    <None Include="f4shader_screen.glsl" />
+    <None Include="f4shader_stencil.glsl" />
     <None Include="packages.config" />
-    <None Include="v2shader.glsl" />
-    <None Include="vshader.glsl" />
-    <None Include="vshader_light.glsl" />
-    <None Include="vshader_model.glsl" />
+    <None Include="v4shader.glsl" />
+    <None Include="v4shader_screen.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

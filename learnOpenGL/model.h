@@ -203,6 +203,7 @@ unsigned int TextureFromFile(const char * path, const char * directory, bool gam
 	glGenTextures(1, &textureID);
 
 	int width, height, nrComponents;
+	stbi_set_flip_vertically_on_load(true);
 	unsigned char *data = stbi_load(fileName.c_str(), &width, &height, &nrComponents, 0);
 	if (data)
 	{

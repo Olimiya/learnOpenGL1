@@ -41,18 +41,36 @@
 //glm::mat4 look(glm::vec3 eye, glm::vec3 center, glm::vec3 up);
 //GLFWwindow *init();
 //void loadData();
+//void seeMat4(glm::mat4 mat)
+//{
+//	for (int i = 0; i < 4; i++)
+//	{
+//		for (int j = 0; j < 4; j++)
+//			std::cout << mat[j][i] << " ";
+//		std::cout << std::endl;
+//	}
+//}
 //
 //int main()
 //{
 //	GLFWwindow *window = init();
 //
-//	Shader ourShader("vshader.glsl", "fshader.glsl");
+//	Shader ourShader("v1shader.glsl", "f1shader.glsl");
 //	program = ourShader.ID;
 //	loadData();
 //
 //	ourShader.use();
 //	//ourShader.setInt("texture1", 0);
 //	ourShader.setInt("texture2", 1);
+//
+//	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (SCR_WIDTH) / (SCR_HEIGHT), 0.1f, 100.0f);
+//	seeMat4(projection);
+//	std::cout << std::endl;
+//	projection = glm::perspective(glm::radians(80.0f), (SCR_WIDTH) / (SCR_HEIGHT), 0.1f, 100.0f);
+//	seeMat4(projection);
+//	std::cout << std::endl;
+//	projection = glm::perspective(glm::radians(camera.Zoom), ((SCR_WIDTH) / (SCR_HEIGHT)), 10.0f, 100.0f);
+//	seeMat4(projection);
 //
 //	while (!glfwWindowShouldClose(window))
 //	{
@@ -79,7 +97,7 @@
 //
 //		glm::mat4 projection;
 //		//projection = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f);
-//		projection = glm::perspective(glm::radians(camera.Zoom), (SCR_WIDTH) / (SCR_HEIGHT + 100.0f), 0.1f, 100.0f);
+//		projection = glm::perspective(glm::radians(camera.Zoom), (SCR_WIDTH) / (SCR_HEIGHT),0.1f, 100.0f);
 //		ourShader.setMat4("view", view);
 //		ourShader.setMat4("projection", projection);
 //
@@ -104,7 +122,7 @@
 //	glDeleteBuffers(1, &EBO);
 //
 //	glfwTerminate();
-//	//system("pause");
+//	system("pause");
 //	return 0;
 //}
 //
