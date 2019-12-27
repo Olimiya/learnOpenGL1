@@ -135,6 +135,7 @@ int main()
 		 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
 		 0.5f,  0.5f, 0.0f, 1.0f, 1.0f
 	};
+
 	//草的位置
 	vector<glm::vec3> vegetation
 	{
@@ -258,7 +259,7 @@ int main()
 
 		// render
 		// ------
-		//glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
+		glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 		glEnable(GL_DEPTH_TEST);
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -288,32 +289,32 @@ int main()
 		model = glm::translate(model, glm::vec3(0.0f, -0.1f, 0.0f));
 		shader.setMat4("model", model);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
-		////grass
-		//glBindVertexArray(grassVAO);
-		//glBindTexture(GL_TEXTURE_2D, grassTexture);
-		//for(GLuint i = 0; i < vegetation.size(); i++)
-		//{
-		//	model = glm::mat4(1.0f);
-		//	model = glm::translate(model, vegetation[i]);
-		//	shader.setMat4("model", model);
-		//	glDrawArrays(GL_TRIANGLES, 0, 6);
-		//}
-		////window
-		//glBindVertexArray(windowVAO);
-		//glBindTexture(GL_TEXTURE_2D, windowTexture);
-		//map<float, glm::vec3> sorted;
-		//for (GLuint i = 0; i < windows.size(); i++)
-		//{
-		//	float distance = glm::length(camera.Position - windows[i]);
-		//	sorted[distance] = windows[i];
-		//}
-		//for (auto i = sorted.rbegin(); i != sorted.rend(); i++)
-		//{
-		//	model = glm::mat4(1.0f);
-		//	model = glm::translate(model, i->second);
-		//	shader.setMat4("model", model);
-		//	glDrawArrays(GL_TRIANGLES, 0, 6);
-		//}
+		//grass
+		glBindVertexArray(grassVAO);
+		glBindTexture(GL_TEXTURE_2D, grassTexture);
+		for(GLuint i = 0; i < vegetation.size(); i++)
+		{
+			model = glm::mat4(1.0f);
+			model = glm::translate(model, vegetation[i]);
+			shader.setMat4("model", model);
+			glDrawArrays(GL_TRIANGLES, 0, 6);
+		}
+		//window
+		glBindVertexArray(windowVAO);
+		glBindTexture(GL_TEXTURE_2D, windowTexture);
+		map<float, glm::vec3> sorted;
+		for (GLuint i = 0; i < windows.size(); i++)
+		{
+			float distance = glm::length(camera.Position - windows[i]);
+			sorted[distance] = windows[i];
+		}
+		for (auto i = sorted.rbegin(); i != sorted.rend(); i++)
+		{
+			model = glm::mat4(1.0f);
+			model = glm::translate(model, i->second);
+			shader.setMat4("model", model);
+			glDrawArrays(GL_TRIANGLES, 0, 6);
+		}
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glDisable(GL_DEPTH_TEST);
