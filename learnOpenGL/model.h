@@ -39,7 +39,6 @@ private:
 		}
 		directory = path.substr(0, path.find_last_of("/"));
 
-		whiteTexture = TextureFromFile("white.bmp", "./");
 		processNode(scene->mRootNode, scene);
 	}
 	void processNode(aiNode* node, const aiScene* scene)
@@ -57,12 +56,6 @@ private:
 	{
 		vector<Vertex> vertices;
 		vector<Texture> textures;
-		//默认都至少会有一张白色的贴图
-		Texture texture;
-		texture.id = whiteTexture;
-		texture.name = "white";
-		texture.path = "./white.bmp";
-		textures.push_back(texture);
 		vector<unsigned int> indices;
 		Material matAttr;
 		matAttr.ka = glm::vec3(1.0f, 0.5f, 0.31f);
@@ -121,6 +114,10 @@ private:
 		if (mesh->mMaterialIndex > 0)
 		{
 			aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
+			//0. ambient maps
+			vector<Texture> ambientMaps = loadMaterialTextures(material,
+				aiTextureType_AMBIENT, "texture_ambient");
+			textures.insert(textures.end(), ambientMaps.begin(), ambientMaps.end());
 			//1. diffuse maps
 			vector<Texture> diffuseMaps = loadMaterialTextures(material,
 				aiTextureType_DIFFUSE, "texture_diffuse");

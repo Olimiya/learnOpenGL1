@@ -56,41 +56,27 @@ public:
 	}
 	void Draw(Shader shader)
 	{
-		bool diffuse = false;
-		bool specular = false;
-		//unsigned int diffuseNumber = 1;
-		//unsigned int specularNumber = 1;
-		//unsigned int normalNumber = 1;
-		//unsigned int heightNumber = 1;
-		for (unsigned int i = 1; i < textures.size(); i++)
+		shader.setBool("hasAmbient", false);
+		shader.setBool("hasSpecular", false);
+		shader.setBool("hasDiffuse", false);
+
+		for (unsigned int i = 0; i < textures.size(); i++)
 		{
 			string name = textures[i].name;
-			if (name == "texture_diffuse")
-				diffuse = true;
+			if (name == "texture_ambient")
+				shader.setBool("hasAmbient", true);
+			else if (name == "texture_diffuse")
+				shader.setBool("hasDiffuse", true);
 			else if (name == "texture_specular")
-				specular = true;
+				shader.setBool("hasSpecular", true);
 			//else if (name == "texture_normal")
 			//	number = to_string(normalNumber++);
 			//else if (name == "texture_height")
 			//	number = to_string(heightNumber++);
 
-			glActiveTexture(GL_TEXTURE0 + i - 1);
-			shader.setInt(("material." + name).c_str(), i - 1);
+			glActiveTexture(GL_TEXTURE0 + i);
+			shader.setInt(("material." + name).c_str(), i);
 			glBindTexture(GL_TEXTURE_2D, textures[i].id);
-		}
-		int i = textures.size() - 1;
-		if (!diffuse)
-		{
-			glActiveTexture(GL_TEXTURE0 + i);
-			shader.setInt("material.texture_diffuse", i);
-			i++;
-			glBindTexture(GL_TEXTURE_2D, textures[0].id);
-		}
-		if (!specular)
-		{
-			glActiveTexture(GL_TEXTURE0 + i);
-			shader.setInt("material.texture_specular", i);
-			glBindTexture(GL_TEXTURE_2D, textures[0].id);
 		}
 
 		//传入材质

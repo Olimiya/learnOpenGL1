@@ -129,6 +129,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="glad.c" />
+    <ClCompile Include="源6-凹凸贴图.cpp" />
+    <ClCompile Include="源5-立方体贴图.cpp" />
+    <ClCompile Include="源.cpp" />
     <ClCompile Include="源3-模型.cpp" />
     <ClCompile Include="源1-坐标空间.cpp" />
     <ClCompile Include="源2-光照.cpp" />
@@ -145,12 +148,15 @@
     <ClInclude Include="model.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="f4shader.glsl" />
-    <None Include="f4shader_screen.glsl" />
-    <None Include="f4shader_stencil.glsl" />
+    <None Include="f1shader.glsl" />
+    <None Include="f5shader.glsl" />
+    <None Include="f5shader_sky.glsl" />
+    <None Include="f6shader.glsl" />
     <None Include="packages.config" />
-    <None Include="v4shader.glsl" />
-    <None Include="v4shader_screen.glsl" />
+    <None Include="v1shader.glsl" />
+    <None Include="v5shader.glsl" />
+    <None Include="v5shader_sky.glsl" />
+    <None Include="v6shader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
